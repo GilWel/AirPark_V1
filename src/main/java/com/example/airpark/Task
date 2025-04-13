@@ -1,0 +1,22 @@
+src/main/java/your.package/
+│
+├── entity/
+│   ├── Airplane.java
+│   └── Hangar.java
+│
+├── repository/
+│   ├── AirplaneRepository.java
+│   └── HangarRepository.java
+│
+├── service/
+│   ├── AirplaneService.java
+│   ├── HangarService.java
+│   └── impl/
+│       ├── AirplaneServiceImpl.java
+│       └── HangarServiceImpl.java
+│
+├── controller/
+│   ├── AirplaneController.java
+│   └── HangarController.java
+│
+└── CrudApplication.java
