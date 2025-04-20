@@ -1,9 +1,9 @@
-package com.example.airpark.service;
+package com.example.airpark.service.serviceLocalWithDatabase;
 
 import com.example.airpark.dto.hangarDto.HangarRequestDto;
 import com.example.airpark.dto.hangarDto.HangarResponseDto;
 import com.example.airpark.entity.Hangar;
-import com.example.airpark.repository.HangarRepository;
+import com.example.airpark.repository.repositoryLocalWithDatabase.HangarRepository;
 import com.example.airpark.service.util.Converter;
 import org.springframework.stereotype.Service;
 

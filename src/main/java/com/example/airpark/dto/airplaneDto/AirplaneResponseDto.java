@@ -5,6 +5,7 @@ import com.example.airpark.entity.Hangar;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 @Data
 @AllArgsConstructor
@@ -15,6 +16,7 @@ public class AirplaneResponseDto {
     private String airplaneManufacturer;
     private Integer airplaneYear;
     private Integer airplaneCapacity;
+    @Setter
     private boolean isAvailable;
 
     private HangarResponseDto hangarResponseDto;
@@ -25,6 +27,10 @@ public class AirplaneResponseDto {
         this.airplaneManufacturer = airplaneManufacturer;
         this.airplaneYear = airplaneYear;
         this.airplaneCapacity = airplaneCapacity;
+
+    }
+
+    public void setIsAvailable(boolean available) {
 
     }
 }

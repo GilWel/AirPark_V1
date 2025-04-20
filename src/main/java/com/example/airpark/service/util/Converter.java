@@ -15,7 +15,8 @@ public class Converter {
         airplane.setAirplaneModel(dto.getAirplaneModel());
         airplane.setAirplaneManufacturer(dto.getAirplaneManufacturer());
         airplane.setAirplaneYear(dto.getAirplaneYear());
-
+        airplane.setAirplaneCapacity(dto.getAirplaneCapacity());
+        airplane.setAvailable(true); // или false — по логике приложения
         return airplane;
     }
 
@@ -28,6 +29,7 @@ public class Converter {
         dto.setAirplaneManufacturer(airplane.getAirplaneManufacturer());
         dto.setAirplaneYear(airplane.getAirplaneYear());
         dto.setAirplaneCapacity(airplane.getAirplaneCapacity());
+        dto.setIsAvailable(airplane.isAvailable());
 
 
         Hangar hangarFromAirplane = airplane.getHangar();

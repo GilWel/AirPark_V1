@@ -1,4 +1,4 @@
-package com.example.airpark.service;
+package com.example.airpark.service.serviceLocalWithDatabase;
 
 import com.example.airpark.dto.airplaneDto.AirplaneRequestDto;
 import com.example.airpark.dto.airplaneDto.AirplaneResponseDto;
@@ -6,14 +6,12 @@ import com.example.airpark.entity.Airplane;
 import com.example.airpark.entity.Hangar;
 
 
-import com.example.airpark.repository.AirplaneRepository;
-import com.example.airpark.repository.HangarRepository;
+import com.example.airpark.repository.repositoryLocalWithDatabase.AirplaneRepository;
 import com.example.airpark.service.util.Converter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.stream.Collectors;
 
 @Service
 public class AirplaneService {

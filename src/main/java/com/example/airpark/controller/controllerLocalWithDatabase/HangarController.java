@@ -1,10 +1,9 @@
-package com.example.airpark.controller;
+package com.example.airpark.controller.controllerLocalWithDatabase;
 
 
 import com.example.airpark.dto.hangarDto.HangarRequestDto;
 import com.example.airpark.dto.hangarDto.HangarResponseDto;
-import com.example.airpark.entity.Hangar;
-import com.example.airpark.service.HangarService;
+import com.example.airpark.service.serviceLocalWithDatabase.HangarService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
