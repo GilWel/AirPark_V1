@@ -16,7 +16,7 @@ public class Converter {
         airplane.setAirplaneManufacturer(dto.getAirplaneManufacturer());
         airplane.setAirplaneYear(dto.getAirplaneYear());
         airplane.setAirplaneCapacity(dto.getAirplaneCapacity());
-        airplane.setAvailable(true); // или false — по логике приложения
+        airplane.setAvailable(false); // или false — по логике приложения
         return airplane;
     }
 

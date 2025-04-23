@@ -5,6 +5,7 @@ import com.example.airpark.entity.Hangar;
 import com.example.airpark.repository.AirplaneRepositoryDb;
 import com.example.airpark.service.serviceLocalWithDatabase.HangarService;
 import com.example.airpark.service.util.Converter;
+import jakarta.transaction.Transactional;
 import lombok.AllArgsConstructor;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
@@ -14,6 +15,7 @@ import java.util.Optional;
 
 @Service
 @AllArgsConstructor
+@Transactional
 public class AirplaneServiceDb  {
     private AirplaneRepositoryDb airplaneRepositoryDb;
     private HangarServiceDb  hangarServiceDb;

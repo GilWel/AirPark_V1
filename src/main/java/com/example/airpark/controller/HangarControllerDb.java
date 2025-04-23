@@ -41,6 +41,7 @@ public class HangarControllerDb {
     @PostMapping
     public ResponseEntity<HangarResponseDto> createHangar(@RequestBody HangarRequestDto hangarRequestDto) {
         Hangar hangar = converter.hangarFromDto(hangarRequestDto);
+        hangar.setHangarCapacity(10);
         Hangar savedHangar = hangarServiceDb.save(hangar);
         return ResponseEntity.ok(converter.dtoFromHangar(savedHangar));
     }

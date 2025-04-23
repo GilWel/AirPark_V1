@@ -26,12 +26,20 @@ public class Airplane {
     @JoinColumn(name = "hangar_hangar_id")
     private Hangar hangar; //ангар, где стоит этот самолет
 
-    public Airplane(String airplaneModel, String airplaneManufacturer, Integer airplaneYear, Integer airplaneCapacity) {
+//    public Airplane(String airplaneModel, String airplaneManufacturer, Integer airplaneYear, Integer airplaneCapacity) {
+//        this.airplaneModel = airplaneModel;
+//        this.airplaneManufacturer = airplaneManufacturer;
+//        this.airplaneYear = airplaneYear;
+//        this.airplaneCapacity = airplaneCapacity;
+//    }
+
+    public Airplane(Integer airplaneId, String airplaneModel, String airplaneManufacturer, Integer airplaneYear, Integer airplaneCapacity, boolean isAvailable) {
+        this.airplaneId = airplaneId;
         this.airplaneModel = airplaneModel;
         this.airplaneManufacturer = airplaneManufacturer;
         this.airplaneYear = airplaneYear;
         this.airplaneCapacity = airplaneCapacity;
+        this.isAvailable = true;
+
     }
-
-
 }

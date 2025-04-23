@@ -1,0 +1,80 @@
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                   http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.29.xsd"
+                   objectQuotingStrategy="QUOTE_ONLY_RESERVED_WORDS">
+
+    <changeSet id="create.table.hangars" author="Gilian Welsch">
+
+        <createTable tableName="hangars">
+            <column name="hangar_id" type="INT" autoIncrement="true">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="hangar_capacity" type="INT"/>
+            <column name="hangar_location" type="varchar (255)"/>
+            <column name="hangar_name" type="varchar (255)"/>
+        </createTable>
+    </changeSet>
+
+    <changeSet id="create.table.airplanes" author="Gilian Welsch">
+        <createTable tableName="airplanes">
+            <column name="airplane_id" type="INT" autoIncrement="true">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="airplane_capacity" type="INT"/>
+            <column name="airplane_manufacturer" type="varchar (255)"/>
+            <column name="airplane_model_name" type="varchar (255)"/>
+            <column name="airplane_year" type="INT"/>
+            <column name="is_available" type="boolean"/>
+            <column name="hangar_hangar_id" type="LONG"/>
+
+
+        </createTable>
+        <addForeignKeyConstraint  baseTableName="airplanes"
+                                  baseColumnNames="hangar_hangar_id"
+                                  constraintName="fk_airplanes_hangars"
+                                  referencedTableName="hangars"
+                                  referencedColumnNames="hangar_id"/>
+    </changeSet>
+
+
+    <!-- === Добавим данные в hangars === -->
+    <changeSet id="insert-into-hangars" author="you">
+        <insert tableName="hangars">
+            <column name="hangar_id" valueNumeric="1"/>
+            <column name="hangar_name" value="Alpha Hangar"/>
+            <column name="hangar_location" value="Los Angeles"/>
+            <column name="hangar_capacity" valueNumeric="5"/>
+        </insert>
+
+        <insert tableName="hangars">
+            <column name="hangar_id" valueNumeric="2"/>
+            <column name="hangar_name" value="Bravo Hangar"/>
+            <column name="hangar_location" value="New York"/>
+            <column name="hangar_capacity" valueNumeric="7"/>
+        </insert>
+    </changeSet>
+
+    <!-- === Добавим данные в airplanes === -->
+    <changeSet id="insert-into-airplanes" author="you">
+        <insert tableName="airplanes">
+            <column name="airplane_id" valueNumeric="1"/>
+            <column name="airplane_model_name" value="Boeing 737"/>
+            <column name="airplane_manufacturer" value="Boeing"/>
+            <column name="airplane_year" valueNumeric="2010"/>
+            <column name="airplane_capacity" valueNumeric="180"/>
+            <column name="is_available" valueBoolean="true"/>
+            <column name="hangar_hangar_id" valueNumeric="1"/>
+        </insert>
+
+        <insert tableName="airplanes">
+            <column name="airplane_id" valueNumeric="2"/>
+            <column name="airplane_model_name" value="Airbus A320"/>
+            <column name="airplane_manufacturer" value="Airbus"/>
+            <column name="airplane_year" valueNumeric="2015"/>
+            <column name="airplane_capacity" valueNumeric="150"/>
+            <column name="is_available" valueBoolean="false"/>
+            <column name="hangar_hangar_id" valueNumeric="2"/>
+        </insert>
+    </changeSet>
+</databaseChangeLog>
