@@ -57,6 +57,8 @@
 
     <!-- === Добавим данные в airplanes === -->
     <changeSet id="insert-into-airplanes" author="you">
+
+
         <insert tableName="airplanes">
             <column name="airplane_id" valueNumeric="1"/>
             <column name="airplane_model_name" value="Boeing 737"/>
