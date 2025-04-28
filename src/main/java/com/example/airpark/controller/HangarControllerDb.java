@@ -5,10 +5,14 @@ import com.example.airpark.dto.hangarDto.HangarResponseDto;
 import com.example.airpark.entity.Hangar;
 import com.example.airpark.service.HangarServiceDb;
 import com.example.airpark.service.util.Converter;
+import jakarta.validation.Valid;
 import lombok.AllArgsConstructor;
+import org.springframework.data.crossstore.ChangeSetPersister;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.nio.file.FileAlreadyExistsException;
 import java.util.List;
 import java.util.Optional;
 
@@ -31,15 +35,12 @@ public class HangarControllerDb {
     @GetMapping("/{id}")
     public ResponseEntity<HangarResponseDto> getHangarById(@PathVariable Integer id) {
         Optional<Hangar> hangarOptional = hangarServiceDb.findById(id);
-        if (hangarOptional.isPresent()) {
-            return ResponseEntity.ok(converter.dtoFromHangar(hangarOptional.get()));
-        }
-        return ResponseEntity.notFound().build();
+        return hangarOptional.map(hangar -> ResponseEntity.ok(converter.dtoFromHangar(hangar))).orElseGet(() -> ResponseEntity.notFound().build());
     }
 
     // Создать новый ангар
     @PostMapping
-    public ResponseEntity<HangarResponseDto> createHangar(@RequestBody HangarRequestDto hangarRequestDto) {
+    public ResponseEntity<HangarResponseDto> createHangar(@Valid @RequestBody HangarRequestDto hangarRequestDto) {
         Hangar hangar = converter.hangarFromDto(hangarRequestDto);
         hangar.setHangarCapacity(10);
         Hangar savedHangar = hangarServiceDb.save(hangar);
@@ -68,6 +69,7 @@ public class HangarControllerDb {
         hangarServiceDb.deleteById(id);
         return ResponseEntity.noContent().build();
     }
+
 }
 
 

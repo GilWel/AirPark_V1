@@ -45,4 +45,5 @@ public class AirplaneServiceDb  {
     public void deleteById(Integer id) {
         airplaneRepositoryDb.deleteById(id);
     }
+
 }
