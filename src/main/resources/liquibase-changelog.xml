@@ -11,8 +11,8 @@
                 <constraints primaryKey="true"/>
             </column>
             <column name="hangar_capacity" type="INT"/>
-            <column name="hangar_location" type="varchar (255)"/>
-            <column name="hangar_name" type="varchar (255)"/>
+            <column name="hangar_location" type="varchar(255)"/>
+            <column name="hangar_name" type="varchar(255)"/>
         </createTable>
     </changeSet>
 
@@ -22,11 +22,11 @@
                 <constraints primaryKey="true"/>
             </column>
             <column name="airplane_capacity" type="INT"/>
-            <column name="airplane_manufacturer" type="varchar (255)"/>
-            <column name="airplane_model_name" type="varchar (255)"/>
+            <column name="airplane_manufacturer" type="varchar(255)"/>
+            <column name="airplane_model_name" type="varchar(255)"/>
             <column name="airplane_year" type="INT"/>
             <column name="is_available" type="boolean"/>
-            <column name="hangar_hangar_id" type="LONG"/>
+            <column name="hangar_hangar_id" type="INT"/>
 
 
         </createTable>

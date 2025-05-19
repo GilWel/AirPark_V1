@@ -7,12 +7,10 @@ import com.example.airpark.service.HangarServiceDb;
 import com.example.airpark.service.util.Converter;
 import jakarta.validation.Valid;
 import lombok.AllArgsConstructor;
-import org.springframework.data.crossstore.ChangeSetPersister;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.nio.file.FileAlreadyExistsException;
+
 import java.util.List;
 import java.util.Optional;
 

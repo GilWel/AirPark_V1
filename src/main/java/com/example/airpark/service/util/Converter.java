@@ -6,62 +6,46 @@ import com.example.airpark.dto.hangarDto.HangarRequestDto;
 import com.example.airpark.dto.hangarDto.HangarResponseDto;
 import com.example.airpark.entity.Airplane;
 import com.example.airpark.entity.Hangar;
-import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
 
-@Component
+@Service
 public class Converter {
+
     public Airplane fromDto(AirplaneRequestDto dto) {
-        Airplane airplane = new Airplane();
-        airplane.setAirplaneModel(dto.getAirplaneModel());
-        airplane.setAirplaneManufacturer(dto.getAirplaneManufacturer());
-        airplane.setAirplaneYear(dto.getAirplaneYear());
-        airplane.setAirplaneCapacity(dto.getAirplaneCapacity());
-        airplane.setAvailable(false); // или false — по логике приложения
-        return airplane;
+        return Airplane.builder()
+                .airplaneModel(dto.getAirplaneModel())
+                .airplaneManufacturer(dto.getAirplaneManufacturer())
+                .airplaneYear(dto.getAirplaneYear())
+                .airplaneCapacity(dto.getAirplaneCapacity())
+                .isAvailable(false) // логика по умолчанию
+                .build();
     }
 
     public AirplaneResponseDto toDto(Airplane airplane) {
-
-        AirplaneResponseDto dto = new AirplaneResponseDto();
-
-        dto.setAirplaneId(airplane.getAirplaneId());
-        dto.setAirplaneModel(airplane.getAirplaneModel());
-        dto.setAirplaneManufacturer(airplane.getAirplaneManufacturer());
-        dto.setAirplaneYear(airplane.getAirplaneYear());
-        dto.setAirplaneCapacity(airplane.getAirplaneCapacity());
-        dto.setIsAvailable(airplane.isAvailable());
-
-
-        Hangar hangarFromAirplane = airplane.getHangar();
-
-        HangarResponseDto hangarResponseDto = dtoFromHangar(hangarFromAirplane);
-
-        dto.setHangarResponseDto(hangarResponseDto);
-
-
-        return dto;
+        return AirplaneResponseDto.builder()
+                .airplaneId(airplane.getAirplaneId())
+                .airplaneModel(airplane.getAirplaneModel())
+                .airplaneManufacturer(airplane.getAirplaneManufacturer())
+                .airplaneYear(airplane.getAirplaneYear())
+                .airplaneCapacity(airplane.getAirplaneCapacity())
+                .isAvailable(airplane.isAvailable())
+                .hangarResponseDto(dtoFromHangar(airplane.getHangar()))
+                .build();
     }
-
 
     public HangarResponseDto dtoFromHangar(Hangar hangar) {
-        HangarResponseDto hangarResponseDto = new HangarResponseDto(
-                hangar.getHangarId(),
-                hangar.getHangarName(),
-                hangar.getHangarLocation(),
-                hangar.getHangarCapacity()
-        );
-
-        return hangarResponseDto;
+        return HangarResponseDto.builder()
+                .hangarId(hangar.getHangarId())
+                .hangarName(hangar.getHangarName())
+                .hangarLocation(hangar.getHangarLocation())
+                .hangarCapacity(hangar.getHangarCapacity())
+                .build();
     }
 
-
     public Hangar hangarFromDto(HangarRequestDto dto) {
-        Hangar hangar = new Hangar();
-
-        hangar.setHangarName(dto.getHangarName());
-        hangar.setHangarLocation(dto.getHangarLocation());
-
-
-        return hangar;
+        return Hangar.builder()
+                .hangarName(dto.getHangarName())
+                .hangarLocation(dto.getHangarLocation())
+                .build();
     }
 }
